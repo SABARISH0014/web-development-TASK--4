@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SABARISH CALCULATOR</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url('6184604.jpg');
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            position: absolute;
+            top: 20px;
+            color: #fff; /* Title color */
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        .calculator {
+            background-color: rgba(0, 0, 0, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            width: 300px;
+            text-align: center;
+        }
+        #display {
+            width: calc(100% - 20px);
+            height: 50px;
+            background-color: #e0e0e0;
+            margin-bottom: 10px;
+            padding: 10px;
+            font-size: 24px;
+            border: none;
+            border-radius: 5px;
+            text-align: right;
+            box-sizing: border-box;
+            color: #333; /* Display text color */
+        }
+        #result {
+            height: 50px;
+            background-color: #d4edda;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding: 0 10px;
+            font-size: 24px;
+            border-radius: 5px;
+            border: 1px solid #c3e6cb;
+            box-sizing: border-box;
+            color: #155724; /* Result text color */
+        }
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+        button {
+            padding: 15px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff; /* Button background color */
+            color: #fff; /* Button text color */
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #0056b3; /* Button hover color */
+        }
+        button:active {
+            background-color: #004494; /* Button active color */
+        }
+        @media (max-width: 400px) {
+            .calculator {
+                width: 90%;
+            }
+            h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Calculator</h1>
+    <div class="calculator">
+        <input type="text" id="display" disabled>
+        <div id="result">Result: </div>
+        <div class="buttons">
+            <button onclick="clearDisplay()">C</button>
+            <button onclick="appendToDisplay('/')">/</button>
+            <button onclick="appendToDisplay('*')">*</button>
+            <button onclick="appendToDisplay('-')">-</button>
+            <button onclick="appendToDisplay('+')">+</button>
+            <button onclick="appendToDisplay('1')">1</button>
+            <button onclick="appendToDisplay('2')">2</button>
+            <button onclick="appendToDisplay('3')">3</button>
+            <button onclick="appendToDisplay('4')">4</button>
+            <button onclick="appendToDisplay('5')">5</button>
+            <button onclick="appendToDisplay('6')">6</button>
+            <button onclick="appendToDisplay('7')">7</button>
+            <button onclick="appendToDisplay('8')">8</button>
+            <button onclick="appendToDisplay('9')">9</button>
+            <button onclick="appendToDisplay('0')">0</button>
+            <button onclick="appendToDisplay('.')">.</button>
+            <button onclick="calculate()">=</button>
+            <button onclick="calculateSquareRoot()">√</button>
+            <button onclick="calculateCubeRoot()">∛</button>
+            <button onclick="calculatePower()">^</button>
+            <button onclick="calculateSquare()">x²</button>
+            <button onclick="calculateCube()">x³</button>
+        </div>
+    </div>
+    <script>
+        function clearDisplay() {
+            document.getElementById('display').value = '';
+            document.getElementById('result').innerText = 'Result: ';
+        }
+
+        function appendToDisplay(value) {
+            document.getElementById('display').value += value;
+        }
+
+        function calculate() {
+            const display = document.getElementById('display');
+            const result = eval(display.value);
+            document.getElementById('result').innerText = 'Result: ' + result;
+        }
+
+        function calculateSquareRoot() {
+            const display = document.getElementById('display');
+            const result = Math.sqrt(eval(display.value));
+            document.getElementById('result').innerText = 'Result: ' + result;
+        }
+
+        function calculateCubeRoot() {
+            const display = document.getElementById('display');
+            const result = Math.cbrt(eval(display.value));
+            document.getElementById('result').innerText = 'Result: ' + result;
+        }
+
+        function calculatePower() {
+            const display = document.getElementById('display');
+            const base = eval(display.value);
+            const exponent = prompt('Enter the exponent:');
+            const result = Math.pow(base, exponent);
+            document.getElementById('result').innerText = 'Result: ' + result;
+        }
+
+        function calculateSquare() {
+            const display = document.getElementById('display');
+            const result = Math.pow(eval(display.value), 2);
+            document.getElementById('result').innerText = 'Result: ' + result;
+        }
+
+        function calculateCube() {
+            const display = document.getElementById('display');
+            const result = Math.pow(eval(display.value), 3);
+            document.getElementById('result').innerText = 'Result: ' + result;
+        }
+    </script>
+</body>
+</html>
